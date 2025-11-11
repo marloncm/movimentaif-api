@@ -27,8 +27,10 @@ public class FirebaseConfig {
     public Firestore firestore() throws IOException {
 
         // Converte a string JSON (vinda da Config Var) em um InputStream
+        String jsonFixed = serviceAccountJson.replace("\\n", "\n");
+
         InputStream serviceAccount = new ByteArrayInputStream(
-                serviceAccountJson.getBytes(StandardCharsets.UTF_8)
+                jsonFixed.getBytes(StandardCharsets.UTF_8)
         );
 
         FirebaseOptions options = FirebaseOptions.builder()
