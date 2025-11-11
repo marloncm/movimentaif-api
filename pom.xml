@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version> <!-- Versão do Spring Boot (ajuste se necessário, 3.5.4 não é uma versão comum) -->
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ifrs.movimentaif</groupId>
@@ -29,7 +29,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <!-- CORREÇÃO: Força o Maven a usar UTF-8 para ler e escrever arquivos -->
+        <!-- Força o Maven a usar UTF-8 (Correto) -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -76,7 +76,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!-- A versão é gerenciada pelo spring-boot-starter-parent -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
@@ -86,27 +85,22 @@
 
     <build>
         <plugins>
-            <!-- CORREÇÃO: Adiciona o plugin de resources com encoding UTF-8 -->
+            <!-- Plugin de resources com encoding UTF-8 (Correto) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version> <!-- A versão que o Heroku usou -->
+                <version>3.3.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <!-- CORREÇÃO: O bloco <configuration> foi removido daqui -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
